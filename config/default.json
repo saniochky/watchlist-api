@@ -1,0 +1,6 @@
+{
+  "port": 8080,
+  "mongoUri": "mongodb+srv://artdance:<password>@cluster0.vxtvu.mongodb.net/?retryWrites=true&w=majority",
+  "saltRounds": 12,
+  "jwtSecret": "t42Ofl5OZt98PERZ39sIpJensE3Auv0e^jjk*9vuvuID&7yVGv8О*?Khyu765vg078&&ncvkcIUyc-|"
+}
