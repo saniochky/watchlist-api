@@ -22,6 +22,7 @@ const schema = new Schema({
             },
             addedDate: {
                 type: String,
+                default: new Date().toISOString(),
             },
         }],
         default: [],
@@ -34,9 +35,11 @@ const schema = new Schema({
             },
             liked: {
                 type: Boolean,
+                default: true,
             },
             addedDate: {
                 type: String,
+                default: new Date().toISOString(),
             },
         }],
         default: [],

@@ -7,7 +7,7 @@ const KEY = config.get('jwtSecret');
 module.exports = async (req, res, next) => {
     const authHeader = req.headers.authorization;
 
-    if (authHeader && authHeader.split(' ')[0] === 'JWT') {
+    if (authHeader && authHeader.split(' ')[0] === 'Bearer') {
         const token = authHeader.split(' ')[1];
 
         try {

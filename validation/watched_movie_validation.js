@@ -5,11 +5,9 @@ const schema = Joi.object({
         .integer()
         .required(),
 
-    liked: Joi.boolean()
-        .required(),
+    liked: Joi.boolean(),
 
-    addedDate: Joi.string()
-        .required(),
+    addedDate: Joi.string(),
 });
 
 module.exports = schema;

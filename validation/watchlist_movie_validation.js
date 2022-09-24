@@ -5,8 +5,7 @@ const schema = Joi.object({
         .integer()
         .required(),
 
-    addedDate: Joi.string()
-        .required(),
+    addedDate: Joi.string(),
 });
 
 module.exports = schema;

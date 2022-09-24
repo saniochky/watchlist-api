@@ -39,7 +39,8 @@ function checkBody(req, res, next) {
 
 async function register(req, res, next) {
     try {
-        const existingUser = await userSchema.findOne({username: req.body.username});
+        const username = req.body.username.toLowerCase();
+        const existingUser = await userSchema.findOne({username});
 
         if (existingUser) {
             res.status(400).json({
@@ -47,7 +48,7 @@ async function register(req, res, next) {
             });
         } else {
             const user = new userSchema({
-                username: req.body.username,
+                username,
                 encryptedPassword: await bcrypt.hashSync(req.body.password, SALT),
             });
 
@@ -63,7 +64,7 @@ async function register(req, res, next) {
 
 async function login(req, res, next) {
     try {
-        const user = await userSchema.findOne({username: req.body.username});
+        const user = await userSchema.findOne({username: req.body.username.toLowerCase()});
 
         if (!user) {
             res.status(400).json({

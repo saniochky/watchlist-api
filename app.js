@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 const PORT = config.get('port') || 5000;
+const DB = config.get('mongoUri');
 
 app.use(express.json({type: '*/*'}));
 
@@ -17,10 +18,9 @@ app.use('/api/movies', moviesRouter);
 
 async function startServer() {
     try {
-        await mongoose.connect(config.get('mongoUri'), {
+        await mongoose.connect(DB, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useCreateIndex: true,
         });
 
         app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

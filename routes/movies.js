@@ -19,13 +19,13 @@ router.get('/watchlist', jwtValidation, getWatchlist, async (req, res) => {
     });
 })
 
-router.patch('/watchlist/add', jwtValidation, addToWatchlist, (...args) => checkBody(args, watchlistValidation), async (req, res) => {
+router.patch('/watchlist/add', jwtValidation, (...args) => checkBody(...args, watchlistValidation), addToWatchlist, async (req, res) => {
     res.json({
         'message': 'Movie added to watchlist',
     });
 });
 
-router.patch('/watchlist/remove', jwtValidation, removeFromWatchlist, (...args) => checkBody(args, watchlistValidation), async (req, res) => {
+router.patch('/watchlist/remove', jwtValidation, (...args) => checkBody(...args, watchlistValidation), removeFromWatchlist, async (req, res) => {
     res.json({
         'message': 'Movie removed from watchlist',
     });
@@ -37,13 +37,13 @@ router.get('/watched', jwtValidation, getWatched, async (req, res) => {
     });
 })
 
-router.patch('/watched/add', jwtValidation, addToWatched, (...args) => checkBody(args, watchedValidation), async (req, res) => {
+router.patch('/watched/add', jwtValidation, (...args) => checkBody(...args, watchedValidation), addToWatched, async (req, res) => {
     res.json({
         'message': 'Movie added to watched',
     });
 });
 
-router.patch('/watched/remove', jwtValidation, removeFromWatched, (...args) => checkBody(args, watchedValidation), async (req, res) => {
+router.patch('/watched/remove', jwtValidation, (...args) => checkBody(...args, watchedValidation), removeFromWatched, async (req, res) => {
     res.json({
         'message': 'Movie removed from watched',
     });
@@ -127,6 +127,10 @@ async function addToWatchlist(req, res, next) {
             res.status(400).json({
                 'message': 'User not found',
             });
+        } else if (user.watchlist.find(movie => movie.id === +req.body.id)) {
+            res.status(400).json({
+                'message': 'Movie already in watchlist',
+            });
         } else {
             user.watchlist = [...user.watchlist, {...req.body}];
             await user.save();
@@ -146,6 +150,10 @@ async function addToWatched(req, res, next) {
         if (!user) {
             res.status(400).json({
                 'message': 'User not found',
+            });
+        } else if (user.watched.find(movie => movie.id === +req.body.id)) {
+            res.status(400).json({
+                'message': 'Movie already in watched',
             });
         } else {
             user.watched = [...user.watched, {...req.body}];
@@ -168,7 +176,7 @@ async function removeFromWatchlist(req, res, next) {
                 'message': 'User not found',
             });
         } else {
-            user.watchlist = [...user.watchlist].filter(movie => movie.id !== req.body.id);
+            user.watchlist = [...user.watchlist].filter(movie => movie.id !== +req.body.id);
             await user.save();
             next();
         }
@@ -188,7 +196,7 @@ async function removeFromWatched(req, res, next) {
                 'message': 'User not found',
             });
         } else {
-            user.watched = [...user.watched].filter(movie => movie.id !== req.body.id);
+            user.watched = [...user.watched].filter(movie => movie.id !== +req.body.id);
             await user.save();
             next();
         }
