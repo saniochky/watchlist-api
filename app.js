@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const config = require('config');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -5,6 +7,11 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = config.get('port') || 5000;
 const DB = config.get('mongoUri');
+const JWT_SECRET = config.get('jwtSecret');
+
+console.log('PORT', PORT);
+console.log('DB', DB);
+console.log('JWT_SECRET', JWT_SECRET);
 
 app.use(express.json({type: '*/*'}));
 
