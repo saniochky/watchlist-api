@@ -1,0 +1,6 @@
+{
+  "port": 8080,
+  "saltRounds": 12,
+  "mongoUri": "",
+  "jwtSecret": ""
+}
