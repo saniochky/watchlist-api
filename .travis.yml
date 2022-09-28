@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '10'
+sudo: false
+branches:
+  only:
+  - main
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  keep-history: true
+  api_key:
+    secure: Q7R64pY+h7zzleJnRDqPnvYxb6i7sisboi++Q4aCl/zTHk2MtHcgaIJ9mXnoVsm4vORaVVFu+JbdJfGxxPG4TBAOyqxK3GKyVfLg2/ATr9HM8JtH+qyxwBSsP2qJWbYoDFxN3RcAcLtNGWpvkvhA42Emi+p2apWT+8GMySPieLRopqI1JcG0uIZsvRmHTSphvyrbwEV12Wt5IyDcQZlYXcEivPV0Xn9uWR9jycfv9Rn73Drccdro/0TJZ/AwrtoqZjLvb6erN8iUCTXXl4widRBKQ5B0EJV7+aCgzIy7uXdCzPYL8iKgvQEmIkHlEMrJ3zDW9OtLnnU3/FTmcagofUIYDGaR59Y/Wg4+eKzKEGsRu7RO+6+7Gw1kx0YPTgc4C2aestE7TOoE2+chOHRY7FwKKuBfMfYFKitgMd7D4ImDx7cAqAdV81lkY2LhNcXUgrzb3W3eUUmtPUwk1goE+188SHGq5oywQ4YW8o8f3NM1KBK57LEDG+KO0CIVd5PYW4nNHfZizUJA15AlTruG3rjFfsBROiJPWv8rgQjQQrXUhXRdDS8mrDWKX3pU5/gNjI42cDPHJjPDGWRNPQ/xBLeEaPbm/aR2IO+4HpqKU/IWMTPWgC5vlELCs8TC8LyouP3xps+iJn9MT4SdXVN7af8n6Zmi8CVvnjpgvfeTw2k=
+  app: movie-watchlister-api
