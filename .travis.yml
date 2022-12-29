@@ -6,12 +6,12 @@ cache:
   directories:
   - node_modules
 before_deploy:
-  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
+- rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
 deploy:
   provider: heroku
   keep-history: true
   api_key:
-    secure: MjuUcjfyQLO+nmGMzgIAsQjJ21kACAtStoZ1zfvvLp+tNWYvkdD2wKJnOops4AdC09U8obpjwuC+iBrx8gDFc43/yoslcMEAVz9UdySautedl3X9SQKpeqpAhfaT7chr1lc8XtbyLAWhJAAKKy9it+kFxP4xfcxN3RwCFKGm+WBSwUf25CUyJ9tFghqHRWVHIftrTy9bRbtMHATh1LCH3876VHbIcx0ByWhL2uiwJ5xR6Buq76kGEdvdUeEygyr47C+SrHP2LQwiqDSLC2Yw7Jjpbq/dGh93Dc8oJlAAufdEAes+6GgyO6rScpGJ7SNMcEU9l7t0r3rynpKsNXShsGsoCebMpgGmMA0vQUJ8rwJO7+cBGQHU0upBvNPcLsNAoZHA+Ui4AFVjHEckgQubo9yHnUCTxbgw4BbXULXnshX47ZDExWFddjfT79jSGUyhMR0nTC2NCeiH98MRvmqLxp24c3fDHXQ+xHXajBnRc3HnS8Qjy12f6ZH8imzgip1FS4wD2ALS2S6BjmOiCbVCsHeYVu3tl6f3pEjMBCpVVmqd3g+Imnb3UNZKsig91OLdhRIyWA53jFT/aV+8A5e33KLuJA3HynWxijBnmy23tHn6Tg8LsnIukN/ivXuWLaUlPEkqNT9Elc1ib7pbxAtL5IHPzYIXeqIQF2UprsLDNuI=
+    secure: UqxF+++Tz9EJaRx8SNRXyMBHHr/DymWUb50VjF4W+nqj4+vdL47MogoKOeAp4urXA9srDJDLmQDEpNYttT6wd9Y/jM3Q9MDGTX8C13wbMqKOF9v14k3885Fwp+An59gAe4AiqBKJ7wT5YlXWZr0vRGrXE+ZbRvnmq2b/MfTuTeg5IorfapGDN+WqCvmzi9IwdmC5G2m8+ZH32zIr60FoUHFZ0UlEsOMvl3aacOeC9cSiWrjaCYBlICrJYqiw/5OJbZJ/zujy7iA2DG/JtHuscbdHVgsO79CYAyzeun/DsTEUM7nvgAXEwdinc/MPtE16rdFO/LW+lPqmy/lQ5xWPGvIB28ypRshCj683Kgpxo0HZU1Ts4F2zj2ISKsC2ky9PIayK2og/KPxMyXPjOzh9g2sbhD6r2OBlWBGT3aYqNstG4Zgk2lx3A/Pq1ix7/AUyHbI/uMKLhrUKZvQeupYbvSGzoSe+VtdVBQizrsPdrBWfw9+e1ORpzGd82rQIaWPzTozvrqFRkyQuAQ4GhSJ5mRF4o4waRMtNEHQooLF6VAcaSgqYGl4FCjZZ4gcFi8Y/GcZ6dvtxCNV8kWYsFQKrH2dW9ZCXvkhtgFBpoDqY/YfRIDcKZYcAeilM7s9dOkWTuJ6QjiDpk50WnBuqS/1BijGIrXYxkhmfQXcnWw4tMV0=
   app: movie-watchlister-api
   on:
     repo: saniochky/watchlist-api
